@@ -50,21 +50,21 @@ jobs:
           pip install tox-gh-actions poetry
 
         # declare package_version, repo_owner, repo_name, package_name so you may use it in web hooks.
-      - name: Declare variables for convenient use
-        id: variables_step
-        run: |
-          echo "repo_owner=${GITHUB_REPOSITORY%/*}" >> $GITHUB_OUTPUT
-          echo "repo_name=${GITHUB_REPOSITORY#*/}" >> $GITHUB_OUTPUT
-          echo "package_name=`poetry version | awk '{print $1}'`" >> $GITHUB_OUTPUT
-          echo "package_version=`poetry version --short`" >> $GITHUB_OUTPUT
-        shell: bash
+      # - name: Declare variables for convenient use
+      #   id: variables_step
+      #   run: |
+      #     echo "repo_owner=${GITHUB_REPOSITORY%/*}" >> $GITHUB_OUTPUT
+      #     echo "repo_name=${GITHUB_REPOSITORY#*/}" >> $GITHUB_OUTPUT
+      #     echo "package_name=`poetry version | awk '{print $1}'`" >> $GITHUB_OUTPUT
+      #     echo "package_version=`poetry version --short`" >> $GITHUB_OUTPUT
+      #   shell: bash
 
       - name: publish documentation
         run: |
           poetry install -E doc
           mkdocs build
-          git config --global user.name Docs deploy
-          git config --global user.email docs@dummy.bot.com
+          git config --global user.name canggihpw
+          git config --global user.email canggihpw@gmail.com
           mike deploy -p -f --ignore `poetry version --short` latest
           mike set-default -p `poetry version --short`
 
