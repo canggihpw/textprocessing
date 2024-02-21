@@ -96,8 +96,8 @@ jobs:
           poetry run mkdocs build
           git config --global user.name canggihpw
           git config --global user.email canggihpw@gmail.com
-          poetry mike deploy -p -f --ignore "`poetry version --short`.dev"
-          poetry mike set-default -p "`poetry version --short`.dev"
+          poetry run mike deploy -p -f --ignore "`poetry version --short`.dev"
+          poetry run mike set-default -p "`poetry version --short`.dev"
 
       - name: Build wheels and source tarball
         run: |
