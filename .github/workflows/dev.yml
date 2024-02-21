@@ -68,7 +68,7 @@ jobs:
       #   shell: bash
 
       - name: test with tox
-        run: tox
+        run: poetry run tox
 
       - uses: codecov/codecov-action@v3
         with:
@@ -96,8 +96,8 @@ jobs:
           poetry run mkdocs build
           git config --global user.name canggihpw
           git config --global user.email canggihpw@gmail.com
-          mike deploy -p -f --ignore "`poetry version --short`.dev"
-          mike set-default -p "`poetry version --short`.dev"
+          poetry mike deploy -p -f --ignore "`poetry version --short`.dev"
+          poetry mike set-default -p "`poetry version --short`.dev"
 
       - name: Build wheels and source tarball
         run: |
