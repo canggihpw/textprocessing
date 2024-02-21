@@ -64,7 +64,7 @@ jobs:
           poetry install -E doc
           poetry run mkdocs build
           git config --global user.name canggihpw
-          git config --global user.email canggihpw@gmail.com
+          git config --global user.email cangcappo@gmail.com
           poetry run mike deploy -p -f --ignore `poetry version --short` latest
           poetry run mike set-default -p `poetry version --short`
 
